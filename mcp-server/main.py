@@ -55,7 +55,7 @@ async def fetch_url(url: str):
             return ""
 
 @mcp.tool()
-def get_docs(query: str, library: str):
+async def get_docs(query: str, library: str):
     """
     Search the docs for a given query and library.
     Supports langchain, openai, and llama-index.
@@ -65,9 +65,22 @@ def get_docs(query: str, library: str):
         library: The library to search in (e.g. "langchain")
 
     Returns:
-        List of dictionaries containing source URLs and extracted text
+        Text from the docs
     """
+    if library not in docs_urls:
+        raise ValueError(f"Library {library} not supported")
     
+    query = f"site: {docs_urls[library]} {query}"
+    results = await search_web(query)
+
+    if len(results["organic"]) == 0:
+        return "No results found"
+    
+    text = ""
+    for result in results["organic"]:
+        text += await fetch_url(result["link"])
+    
+    return text
 
 
 async def main():
@@ -76,4 +89,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    # asyncio.run(main())
+    mcp.run(transport="stdio")
