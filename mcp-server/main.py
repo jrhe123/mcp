@@ -55,8 +55,19 @@ async def fetch_url(url: str):
             return ""
 
 @mcp.tool()
-def get_docs():
-    """mcp tool"""
+def get_docs(query: str, library: str):
+    """
+    Search the docs for a given query and library.
+    Supports langchain, openai, and llama-index.
+
+    Args:
+        query: The query to search for (e.g. "Chroma DB")
+        library: The library to search in (e.g. "langchain")
+
+    Returns:
+        List of dictionaries containing source URLs and extracted text
+    """
+    
 
 
 async def main():
