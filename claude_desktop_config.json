@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "documentation": {
+            "command": "/Users/jiaronghe/.local/bin/uv",
+            "args": [
+                "--directory",
+                "/Users/jiaronghe/Desktop/projects/mcp/mcp-server",
+                "run",
+                "main.py"
+            ]
+        }
+    }
+}
