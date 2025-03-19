@@ -17,6 +17,7 @@
 
 ### Install dependencies
 - uv add "mcp[cli]" httpx
+- uv add beautifulsoup4
 
 ### Running the Server
 - uv run main.py
