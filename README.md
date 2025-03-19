@@ -21,3 +21,8 @@
 
 ### Running the Server
 - uv run main.py
+
+### Debugger
+- npx @modelcontextprotocol/inspector uv run main.py
+- http://localhost:5173/#resources
+- connect mcp server -> goto `tool` tab -> list tools -> call `get_docs`
